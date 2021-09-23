@@ -39,10 +39,10 @@
                     {{$item['lon']}}
                 </td>
                 <td class="border-grey-light border p-3 sm:overflow-clip">
-                    {{$item['isln']}}
+                    {{$item['lat']}}
                 </td>
                 <td class="border-grey-light border p-3 sm:overflow-clip">
-                    {{$item['lat']}}
+                    {{$item['isln']}}
                 </td>
             </tr>
         @endforeach

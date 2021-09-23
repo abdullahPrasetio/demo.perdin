@@ -26,9 +26,16 @@
             <div class="flex flex-col items-center justify-center h-screen">
                 <h1 class="text-6xl text-white">Halo, Semuanya</h1>
                 <p class="text-xl"> Selamat datang di demo aplikasi Perjalanan Dinas</p>
-                <a href="/login" class="mt-5 text-white bg-blue-500 hover:bg-blue-700 outline-none focus:ring-1 ring-blue-300 px-4 py-3 rounded-lg">
-                    Login
-                </a>
+                
+                @if (isset($user))
+                    <a href="/home" class="mt-5 text-white bg-blue-500 hover:bg-blue-700 outline-none focus:ring-1 ring-blue-300 px-4 py-3 rounded-lg">
+                        Back to Home
+                    </a>
+                @else
+                    <a href="/login" class="mt-5 text-white bg-blue-500 hover:bg-blue-700 outline-none focus:ring-1 ring-blue-300 px-4 py-3 rounded-lg">
+                        Login
+                    </a>
+                @endif
             </div>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>

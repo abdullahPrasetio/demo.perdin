@@ -47,13 +47,13 @@
             })
             function fetchData(limit,search,page){
                 $.ajax({
-                type: 'GET',
-                data: {limit,search,page},
-                url: "{{ route('location.table') }}",
-                success: function (data) {
-                    $('#table_data').html(data);
-                }
-            });
+                    type: 'GET',
+                    data: {limit,search,page},
+                    url: "{{ route('location.table') }}",
+                    success: function (data) {
+                        $('#table_data').html(data);
+                    }
+                });
             }
             $(document).on('click', '.pagination a', function(event){
                 event.preventDefault(); 

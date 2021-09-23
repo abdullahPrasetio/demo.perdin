@@ -9,7 +9,6 @@ function loginWebservice($username, $password)
     $url = env('URL_SERVICE') . '/api/auth/login?username='.$username.'&password='.$password;
 
     try {
-        // $response = Http::timeout(10)->post($url);
         $response=Http::post($url);
         $data['http_code'] = $response->getStatusCode();
         $data['data']=$response->getBody()->read(5);
@@ -144,7 +143,7 @@ function getAllowance($lokasi_berangkat,$lokasi_tujuan,$distance)
         if ($lokasi_berangkat['provinsi']!=$lokasi_tujuan['provinsi']&&$lokasi_berangkat['pulau']==$lokasi_tujuan['pulau']) {
             $allowance=250000;
         }
-        if ($lokasi_berangkat['pulau']!=$lokasi_tujuan['pulau']) {
+        if ($lokasi_berangkat['provinsi']!=$lokasi_tujuan['provinsi']&&$lokasi_berangkat['pulau']!=$lokasi_tujuan['pulau']) {
             $allowance=300000;
         }
     }

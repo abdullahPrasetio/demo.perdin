@@ -21,13 +21,13 @@
                 <option value="50">50</option>
                 <option value="100">100</option>
             </select>
-            <input
+            {{-- <input
                 type="text"
                 name="q"
                 class="w-3/3 border px-2 focus:outline-none rounded focus:ring-1"
                 id="search"
                 placeholder="search data"
-            />
+            /> --}}
         </div>
         <div id="table_data"></div>
     </div>
@@ -36,8 +36,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            
-
             let limit=$('#limit').val();
             let search=$('#search').val();
             let tbody=$('#tbody');

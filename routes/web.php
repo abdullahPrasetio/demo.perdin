@@ -46,3 +46,56 @@ Route::middleware('jwt.custom.auth')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::get('test',function(){
+    foreach(range(1, 100) as $number) {
+        if ($number % 3 != 0 && $number % 5 != 0) {
+            echo $number . '<br>';
+            continue;
+          }
+          if ($number % 3 == 0) echo 'Mam';
+          if ($number % 5 == 0) echo 'pu';
+          echo '<br>';
+    }
+});
+Route::get('test2',function(){
+    $array=["bandung"=>"Jawa Barat","Semarang"=>"Jawa Tengah","Cirebon"=>"Jawa Barat"];
+    $data=[];
+    foreach($array as $key=>$value){
+        $data[$value][]=$key;
+    }
+    return $data;
+});
+
+Route::get('test3',function(){
+    $array=[1,[10,4,[50,25],3],12,[3,21,8]];
+    
+    $iterasi=new RecursiveIteratorIterator(new RecursiveArrayIterator($array));
+    $total=0;
+    foreach($iterasi as $v) {
+        $total+=$v;
+    }
+    return $total;
+});
+
+Route::get('test4',function(){
+    $array=[21,4,43,8];
+    function myCompare($x, $y)
+    {
+        $xy = $y.$x;
+        
+        $yx = $x.$y;
+        
+        return strcmp($xy, $yx) > 0 ? 1: 0;
+    }
+    function printLargest($arr)
+    {
+        usort($arr, "myCompare");
+    
+        for ($i = 0; $i < count($arr) ; $i++ )
+            echo $arr[$i];
+    }
+ 
+    $total=printLargest($array);
+    return $total;
+});

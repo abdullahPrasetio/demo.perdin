@@ -3,32 +3,35 @@
 @section('content')
     <div class="bg-white flex flex-col">
         <div className="flex justify-between mb-4 px-5">
-            @if ($perdin->status == 'Pending')
-                <form action="{{ route('perjalanan-dinas.change-status',['id'=>$perdin->id,'status'=>'Approved']) }}" method="post" >
-                    @csrf
+            @if ($user->unitkerja=="SDM")
+                @if ($perdin->status == 'Pending')
+                    <form action="{{ route('perjalanan-dinas.change-status',['id'=>$perdin->id,'status'=>'Approved']) }}" method="post" >
+                        @csrf
+                        <button
+                            class="bg-blue-500 hover:bg-blue-700 focus:ring-1 ring-blue-300 px-4 py-2 rounded text-white float-right mx-2"
+                            >
+                            Approve
+                        </button>
+                    </form>
                     <button
-                        class="bg-blue-500 hover:bg-blue-700 focus:ring-1 ring-blue-300 px-4 py-2 rounded text-white float-right mx-2"
-                        >
-                        Approve
+                        href="{{ route('perjalanan-dinas.create') }}"
+                        class="bg-red-500 hover:bg-red-700 focus:ring-1 ring-red-300 px-4 py-2 rounded text-white float-right mx-2" onclick="toggleModal('modal-id')"
+                    >
+                        Rejected
                     </button>
-                </form>
-                <button
-                    href="{{ route('perjalanan-dinas.create') }}"
-                    class="bg-red-500 hover:bg-red-700 focus:ring-1 ring-red-300 px-4 py-2 rounded text-white float-right mx-2" onclick="toggleModal('modal-id')"
-                >
-                    Rejected
-                </button>
+                    
+                @endif
+                @if ($perdin->status == 'Approved')
+                    <form action="{{ route('perjalanan-dinas.change-status',['id'=>$perdin->id,'status'=>'Done']) }}" method="post" >
+                        @csrf
+                        <button
+                            class="bg-green-500 hover:bg-green-700 focus:ring-1 ring-green-300 px-4 py-2 rounded text-white float-right mx-2"
+                            >
+                            Sudah Dibayar
+                        </button>
+                    </form>
+                @endif
                 
-            @endif
-            @if ($perdin->status == 'Approved')
-                <form action="{{ route('perjalanan-dinas.change-status',['id'=>$perdin->id,'status'=>'Done']) }}" method="post" >
-                    @csrf
-                    <button
-                        class="bg-green-500 hover:bg-green-700 focus:ring-1 ring-green-300 px-4 py-2 rounded text-white float-right mx-2"
-                        >
-                        Approve
-                    </button>
-                </form>
             @endif
 
             <a
@@ -129,7 +132,7 @@
                         <label class="block text-sm mb-1 capitalize" for="alasan">Alasan Penolakan</label>
                         <textarea name="alasan"
                         id="alasan"
-                        placeholder="type full address site" rows="5" class="@error('alasan') border-red-500 @enderror px-3 py-2 w-full rounded border focus:outline-none focus:ring-2 ring-gray-200 focus:border-gray-300"></textarea>
+                        placeholder="type alasan penolakan" rows="5" class="@error('alasan') border-red-500 @enderror px-3 py-2 w-full rounded border focus:outline-none focus:ring-2 ring-gray-200 focus:border-gray-300"></textarea>
                         @error('alasan')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror

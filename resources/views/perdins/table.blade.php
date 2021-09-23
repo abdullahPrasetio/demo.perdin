@@ -22,7 +22,7 @@
                     {{$item->id}}
                 </td>
                 <td class="border-grey-light border p-3 sm:overflow-clip">
-                    {{$item->perdins}}
+                    {{$item->no_perdin}}
                 </td>
                 <td class="border-grey-light border p-3">
                     {{$item->lokasi_tujuan_name}}
@@ -59,7 +59,7 @@
                             </svg>
                         </button>
                         <div class="ml-8 hidden overflow-hidden animate-accordion">
-                            <a
+                            {{-- <a
                                 href="#"
                                 class="w-full nav-link py-2 px-4 rounded block focus:outline-none hover:text-white active:text-white hover:bg-gray-700 my-1 flex items-center justify-between"
                             >
@@ -67,7 +67,7 @@
                                     <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd" />
                                 </svg>
                                 Log
-                            </a>
+                            </a> --}}
                             <a
                                 href="{{ route('perjalanan-dinas.show',$item->id) }}"
                                 class="w-full nav-link py-2 px-4 rounded block focus:outline-none hover:text-white active:text-white hover:bg-gray-700 my-1 flex items-center justify-between"
